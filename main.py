@@ -13,6 +13,7 @@ def guess2():
     print("Rules: Pick one number and I will try to guess it in 10 tries.")
     guess = 0
     answers = ["too big", "too small", "correct"]
+    odp = 0
     min_num, max_num = 1, 1000
     tryed = 0
     while True:
@@ -27,20 +28,23 @@ def guess2():
         print("Out of range")
     while tryed < 10:
         guess = randint(min_num, max_num)
-        print("I'm guessing: ", guess, f"|Range {min_num} - {max_num}|")
-        tryed += 1
-        if guess == get_number:
-            print(answers[2])
-            break
-        elif guess < get_number:
-            min_num = guess
-            print(answers[1])
-            continue
-        else:
+        print("I'm guessing: ", guess)
+        odp = int(input("\nIt's correct?\n[Choose: 0 - too big, 1 - too small, 2 - correct]: "))
+        if odp == 0:
             max_num = guess
-            print(answers[0])
+            tryed += 1
             continue
-    print("Nice, I won!")
+        elif odp == 1:
+            min_num = guess
+            tryed += 1
+            continue
+        elif odp == 2:
+            print("I win!")
+            break
+        else:
+            print("You are cheating!")
+            continue
+    print("Za dużo prób")
 
 
 guess2()
