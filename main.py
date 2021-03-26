@@ -8,9 +8,13 @@ Do tego warsztatu dołączony jest schemat blokowy algorytmu. Zaimplementuj go w
 
 from random import randint
 
+
 def guess2():
     print("Rules: Pick one number and I will try to guess it in 10 tries.")
-    number = 0
+    guess = 0
+    answers = ["too big", "too small", "correct"]
+    min_num, max_num = 1, 1000
+    tryed = 0
     while True:
         try:
             get_number = input("Input natural number in range 1-1000: ")
@@ -18,12 +22,24 @@ def guess2():
         except:
             print("It's not a natural number!")
             continue
-        if get_number > 1000 or get_number < 1:
-            print("Out of range")
+        if get_number <= 1000 and get_number >= 1:
+            break
+        print("Out of range")
+    while tryed < 2:
+        guess = randint(min_num, max_num)
+        print("I'm guessing: ", guess, f"|Range {min_num} - {max_num}|")
+        tryed += 1
+        if guess == get_number:
+            return answers[10]
+        elif guess < get_number:
+            min_num = guess
+            print(answers[1])
             continue
-        number = get_number
-        break
-    return number
+        else:
+            max_num = guess
+            print(answers[0])
+            continue
+    return "za duzo prób"
 
 
-print(guess2())
+guess2()
