@@ -25,12 +25,13 @@ def guess2():
         if get_number <= 1000 and get_number >= 1:
             break
         print("Out of range")
-    while tryed < 2:
+    while tryed < 10:
         guess = randint(min_num, max_num)
         print("I'm guessing: ", guess, f"|Range {min_num} - {max_num}|")
         tryed += 1
         if guess == get_number:
-            return answers[10]
+            print(answers[2])
+            break
         elif guess < get_number:
             min_num = guess
             print(answers[1])
@@ -39,7 +40,7 @@ def guess2():
             max_num = guess
             print(answers[0])
             continue
-    return "za duzo prób"
+    print("Nice, I won!")
 
 
 guess2()
