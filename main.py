@@ -9,7 +9,7 @@ Do tego warsztatu dołączony jest schemat blokowy algorytmu. Zaimplementuj go w
 from random import randint
 
 
-def guess2():
+def guess_number():
     print("Rules: Pick one number and I will try to guess it in 10 tries.")
     guess = 0
     answers = ["too big", "too small", "correct"]
@@ -44,7 +44,7 @@ def guess2():
         else:
             print("You are cheating!")
             continue
-    print("Za dużo prób")
+    print("I lost.")
 
 
-guess2()
+guess_number()
